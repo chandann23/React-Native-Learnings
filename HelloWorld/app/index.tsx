@@ -1,7 +1,7 @@
 import { StatusBar, Image, ScrollView, StyleSheet, Text, Platform, View, ImageBackground, Button, Pressable, Modal, ActivityIndicator, Alert } from 'react-native';
 import React, { useState } from 'react';
 
-const image = require('../../assets/images/adaptive-icon.png');
+const image = require('../assets/images/adaptive-icon.png');
 
 export default function HomeScreen() {
 
@@ -84,6 +84,3 @@ export default function HomeScreen() {
 
   );
 }
-
-
-
