@@ -1,20 +1,53 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, SafeAreaView, ScrollView, SectionList, StyleSheet, Text, View } from "react-native";
 import PokemonData from "../data.json"
+import groupedData from "../grouped-data.json" 
 export default function Index() {
 
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      {/* <ScrollView>
       {PokemonData.map((pokemon, index) => {
-        return (
+        return (                                              
           <View key={index} style={styles.cardContainer}>
             <Text style={styles.text}>{pokemon.name}</Text>
             <Text style={styles.text}>{pokemon.type}</Text>
           </View>
         )
       })}
-      </ScrollView>
+      </ScrollView> */}
+
+        {/*
+        <FlatList
+        data={PokemonData}
+        renderItem={({ item }) => (
+          <View style={styles.cardContainer}>
+            <Text style={styles.text}>{item.name}</Text>
+            <Text style={styles.text}>{item.type}</Text>
+          </View>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={() => <Text style={styles.text}>No Pokemons Found</Text>}
+        ListHeaderComponent={() => <Text style={styles.text}>Pokemon List</Text>}
+      // ItemSeparatorComponent={() => <View style={{ height: 16, backgroundColor: "black" }} />} 
+      />
+      */}
+
+
+      <SectionList
+        sections={groupedData} 
+        renderItem={({ item }) => (                                              
+          <View  style={styles.cardContainer}>
+            <Text style={styles.text}>{item}</Text>
+          </View>
+        )}
+        ListHeaderComponent={() => <Text style={styles.text}>Pokemon List</Text>}
+        renderSectionHeader={({section})=>{
+return <Text style={styles.text}>{section.type}</Text>
+        }}
+
+
+      />
     </SafeAreaView>
 
 
@@ -47,9 +80,10 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-   text:{
-      fontSize:18,
-    fontWeight:"bold"
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "red"
 
 
 
